@@ -123,4 +123,4 @@ You can also follow my GitHub profile to stay updated on my latest projects:
 Copyright © 2022 [Muhib Arshad](https://github.com/muhib7353). 
 
 
-<!-- This project is [MIT](https://github.com/muhib7353/Salik-Bank-Limited/blob/main/LICENSE) licensed. -->
+This project is [MIT](https://github.com/muhib7353/React.js-Complete-Tips_and_Guidance/blob/main/License.md) licensed.
