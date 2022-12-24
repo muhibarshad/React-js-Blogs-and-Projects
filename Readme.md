@@ -16,6 +16,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/muhib7353/React.js-Complete-Tips_and_Guidance?logo=c%2B%2B)
 
 ## "During my learning process of React, I developed all the projects and wrote concepts under the guidance of my highly knowledgeable instructor [Academind](https://github.com/academind/react-complete-guide-code). My instructor provided all of the ideas and some source files for these projects."
+
 ### Author: [MUHIB ARSHAD](https://github.com/muhib7353)
 
 ## Why we need react.js ?
@@ -23,6 +24,7 @@
 "In traditional JavaScript, we would have to manually write every piece of HTML tag and its corresponding functionality. However, in large applications like Netflix, we want smooth transitions without having to fetch and load new HTML files every time a user makes a request. To solve this problem, React introduces custom HTML components. These components can be written in a declarative rather than imperative style, allowing us to create reusable and modular code for our application."
 
 ## What are SPAs?
+
 "React JS allows us to build single page applications (SPAs). This means that when a user clicks on a link, rather than fetching a new HTML file from the server, React can dynamically update the JavaScript code to change what is displayed on the screen. Only the initial request needs to be made to the server, and subsequent actions do not require additional requests to be made."
 
 ## Difference between react.js , vue.js and angular.js?
@@ -42,6 +44,10 @@ In JSX components, there must be only one root element returned, not multiple ro
 ## How React code actually loads behind the scenes?
 
 "In a React application, there is typically only one index.html file located in the public folder. This file is the only one that is loaded because React is a single page application. The index.html file contains a root <div> element, which can be accessed in the index.js file located in the src folder. This JavaScript file is only loaded when the application is initially loaded and it renders the <App> component, which serves as the root of all the other components in the application. The App.js file contains the code for the App component and any other components that are attached to it. These components are typically located in a separate components folder."
+
+### How actually it works behind the scenes?
+
+Behind the scenes, React uses a system called the "virtual DOM" to efficiently update the DOM and minimize the number of actual DOM manipulations that need to be performed. When the state of a component changes, React will compare the virtual DOM representation of the updated component to the previous version, and only make the necessary changes to the actual DOM.
 
 ## To start a project
 
@@ -68,11 +74,167 @@ npm start
 - Add aslo nested components(pass props.-- into its custom attribute)
 - JSX returing wrapper element never be a Component (Build Custom Wrapper Components) for this.
 
+```js
+import React from "react";
 
+function Message(props) {
+  return <p>{props.text}</p>;
+}
+```
+
+## What is state in the react and What is the stateHook?
+
+useState is a hook in React that allows you to add state to functional components. Prior to the introduction of hooks, only class-based components could have state.
+
+Here's an example of how you might use useState in a functional component:
+
+```js
+import { useState } from "react";
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+In this example, we are using useState to create a state variable called count and a function called setCount that allows us to update the value of count. The initial value of count is passed as an argument to useState, which in this case is 0.
+
+When the button is clicked, the setCount function is called with the new value for count, which is the current value of count plus 1. This causes the component to re-render and the new value of count is displayed.
+
+Behind the scenes, useState is implemented using a concept called a "state hook." When the component is rendered, the state hook function creates a piece of state and a function for updating that state, and stores them in an array. The array destructuring syntax (const [count, setCount] = useState(0)) is used to extract the current value of the state (count) and the function for updating it (setCount) from the array.
+
+You can use useState multiple times in a single component to create multiple pieces of state. For example:
+
+```js
+import { useState } from "react";
+
+function Example() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("Alice");
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <p>Your name is {name}</p>
+      <button onClick={() => setName("Bob")}>Change name</button>
+    </div>
+  );
+}
+```
+
+## How we can add Two-Way Binding in react.js ?
+
+Two-way binding in React allows you to synchronize the value of a form element with the state of a component. This is often useful when you want to ensure that the user's input is valid and up-to-date.
+
+Here is an example of how to implement two-way binding in a React component:
+
+```js
+import React, { useState } from "react";
+
+function MyForm() {
+  // Declare a state variable and set its initial value to the empty string
+  const [value, setValue] = useState("");
+
+  // Handle changes to the input element
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <form>
+      <input value={value} onChange={handleChange} />
+    </form>
+  );
+}
+```
+
+In this example, we use the useState hook to create a state variable called value and a function called setValue to update it. The input element's value attribute is set to the current value of value, and the onChange event handler is used to update value when the user types into the input.
+
+This creates a two-way binding between the input element and the component's state, allowing the value of the input to be automatically updated as the user types, and the input to be automatically updated when the value of value changes.
+
+You can also use two-way binding with other form elements, such as textareas and select elements. Simply set the value attribute and use an onChange event handler to update the component's state.
+
+## How we can move data from Child-to-Parent Component Communication (Bottom-up) in React.js?
+
+Passing a callback function as a prop: You can pass a callback function as a prop to the child component, and have the child component invoke the callback function when it needs to communicate with the parent. For example:
+
+```js
+// Parent component
+function Parent() {
+  const handleDataFromChild = (data) => {
+    // Do something with the data from the child component
+  };
+
+  return <Child onDataFromChild={handleDataFromChild} />;
+}
+
+// Child component
+function Child(props) {
+  const sendDataToParent = () => {
+    props.onDataFromChild("Some data");
+  };
+
+  return <button onClick={sendDataToParent}>Send data to parent</button>;
+}
+```
+
+In this example, the Parent component renders the Child component and passes a callback function called handleDataFromChild as a prop to the child. The Child component has a button that, when clicked, invokes the sendDataToParent function, which in turn calls the onDataFromChild callback function with some data as an argument. This causes the handleDataFromChild function in the parent component to be executed, and the data from the child is passed to the parent.
+
+This is a simple and effective way to move data from a child component to a parent component, but it can become cumbersome if you need to pass data from multiple children to the same parent, or if you need to pass data from a deeply nested child to a parent that is several levels up the component tree. In these cases, you might want to consider using a state management library or the context API.
+
+## How we can achieve the lifting The State Up ?
+
+"Lifting the state up" is a technique for managing state in a React application that involves moving shared state from a child component to a parent component. This is often useful when multiple child components need to access and modify the same piece of state, as it allows you to avoid having to pass the state down the component tree as props.
+
+Here's an example of how to lift the state up:
+
+```js
+import React, { useState } from "react";
+
+function Parent() {
+  // Declare a state variable and set its initial value
+  const [value, setValue] = useState("");
+
+  // Pass the state and setter function down as props to the children
+  return (
+    <div>
+      <Child value={value} setValue={setValue} />
+      <Sibling value={value} setValue={setValue} />
+    </div>
+  );
+}
+
+function Child(props) {
+  return (
+    <input
+      value={props.value}
+      onChange={(event) => props.setValue(event.target.value)}
+    />
+  );
+}
+
+function Sibling(props) {
+  return <p>{props.value}</p>;
+}
+```
+
+In this example, the Parent component has a state variable called value that is shared by the Child and Sibling components. The Parent component passes the value and setValue functions down as props to the children, allowing them to both access and modify the shared state.
+
+By lifting the state up to the parent component, we can avoid having to pass the state down the component tree as props, and we can easily manage the shared state in one place.
+
+It's important to note that, while lifting the state up can be a useful technique for managing state, it can also lead to a deeper component tree and make it more difficult to understand the flow of data in your application. It's a good idea to carefully consider whether lifting the state up is the right approach for your use case.
 
 # 🤝 Contributing
 
-"Feel free to contribute to this repository. If you want to add new features or resolve any issues, you can fork the repository and make changes to the code. If you only want to make changes to the  file, you can create a pull request to the master branch. I will review it and, if it meets the necessary requirements, I will merge it into the branch. The same process applies for changes to the main branch as well."
+"Feel free to contribute to this repository. If you want to add new features or resolve any issues, you can fork the repository and make changes to the code. If you only want to make changes to the file, you can create a pull request to the master branch. I will review it and, if it meets the necessary requirements, I will merge it into the branch. The same process applies for changes to the main branch as well."
 
 # About me
 
@@ -107,8 +269,6 @@ npm start
 
 </div>
 
-
-
 ## Show your support
 
 If this project was helpful to you, please consider giving it a ⭐️.
@@ -117,10 +277,8 @@ You can also follow my GitHub profile to stay updated on my latest projects:
 @muhib7353
 </a>
 
-
 ## 📝 License
 
-Copyright © 2022 [Muhib Arshad](https://github.com/muhib7353). 
-
+Copyright © 2022 [Muhib Arshad](https://github.com/muhib7353).
 
 This project is [MIT](https://github.com/muhib7353/React.js-Complete-Tips_and_Guidance/blob/main/License.md) licensed.
