@@ -26,7 +26,7 @@ const AddUserForm = (props) => {
     if (+age < 0) {
       setError("Error: Age must be greater than 0!");
     }
-    if (error === "") return;
+    // if (error === "") return;
     props.addUserInList(dataUser);
     setName("");
     setAge("");

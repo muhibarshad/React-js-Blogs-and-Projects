@@ -1,27 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddUserForm from "./Components/AddUserForm";
 import AddedUser from "./Components/AddedUser";
 import * as appStyle from "./App.module.css";
-const usersList = [
-  {
-    id: "1",
-    name: "Muhib",
-    age: 18,
-  },
-  {
-    id: "2",
-    name: "Ali",
-    age: 19,
-  },
-  {
-    id: "3",
-    name: "Hamza",
-    age: 20,
-  },
-];
+const usersList = [];
 
-const App = (props) => {
-  const [listOfUsers, updatedListOfusers] = useState(usersList);
+const App = () => {
+  const [listOfUsers, updatedListOfusers] = useState(() => {
+    try {
+      const item = window.localStorage.getItem("users");
+      return item ? JSON.parse(item) : usersList;
+    } catch (error) {
+      console.log(error);
+      return usersList;
+    }
+  });
 
   const updatedusersHandler = (addedUser) => {
     console.log(addedUser);
@@ -34,6 +26,13 @@ const App = (props) => {
   const deleteAllHandler = () => {
     updatedListOfusers([]);
   };
+  useEffect(() => {
+    try {
+      window.localStorage.setItem("users", JSON.stringify(listOfUsers));
+    } catch (error) {
+      console.log(error);
+    }
+  }, [listOfUsers]);
   return (
     <div className={appStyle.App}>
       <h1>Add User App</h1>
