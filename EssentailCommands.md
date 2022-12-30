@@ -28,3 +28,10 @@ npm install
 ```sh
 npm i --save -styled-components
 ```
+
+## To production build react app on your PC
+
+```sh
+npm install -g serve
+serve -s build
+```
