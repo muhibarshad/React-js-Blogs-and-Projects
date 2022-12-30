@@ -2,7 +2,7 @@
   <img src="react-js-logo-no.jpg">
 </div>
 <br>
-<h1 align="center" style="font-size: 80px;" > React.js-Complete-Tips_and_Guidance 👋</h1>
+<h1 align="center" style="font-size: 80px;" > React-js-Blogs-and-Projects
 
 <br>
 
@@ -231,6 +231,342 @@ In this example, the Parent component has a state variable called value that is 
 By lifting the state up to the parent component, we can avoid having to pass the state down the component tree as props, and we can easily manage the shared state in one place.
 
 It's important to note that, while lifting the state up can be a useful technique for managing state, it can also lead to a deeper component tree and make it more difficult to understand the flow of data in your application. It's a good idea to carefully consider whether lifting the state up is the right approach for your use case.
+
+## How we can render a list in React ?
+
+In React, you can render a list by using the map method on an array, and returning a JSX element for each item in the array. Here's an example of how you could render a list of numbers:
+
+```js
+import React from "react";
+
+function NumberList(props) {
+  const numbers = [1, 2, 3, 4, 5];
+  const listItems = numbers.map((number) => (
+    <li key={number.toString()}>{number}</li>
+  ));
+  return <ul>{listItems}</ul>;
+}
+```
+
+In this example, the map method iterates over the numbers array and creates a new array of li elements. The resulting array is then rendered as a ul element, with each li element representing an item in the list.
+
+It's important to note that each item in the list should have a unique key prop, which helps React identify which items have changed, been added, or been removed. In the example above, the key prop is set to the string version of the number.
+
+## How we achieve the updated new array without losing previous data in it in react by using useState function?
+
+To update the state of an array in React without losing the previous data, you can use the useState hook and the spread operator (...). The useState hook allows you to add state to functional components, and the spread operator allows you to create a new copy of an array, rather than mutating the original array.
+
+Here's an example of how you could use useState and the spread operator to add an item to an array:
+
+```js
+import { useState } from "react";
+
+function Example() {
+  const [items, setItems] = useState([]);
+
+  const addItem = () => {
+    setItems([...items, "new item"]);
+  };
+
+  return (
+    <div>
+      <button onClick={addItem}>Add item</button>
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+In this example, the useState hook is used to add state to the Example component, with an initial value of an empty array. The addItem function creates a new copy of the items array using the spread operator, and adds a new item to the end of the array. The updated array is then passed to the setItems function, which updates the state of the items array.
+
+When the addItem function is called, the Example component will re-render, and the new item will be added to the list. This approach ensures that the previous data in the items array is not lost, and the state is updated in an immutable way.
+
+## How we display the conditional content in React ?
+
+In React, you can display conditional content by using a combination of JavaScript and JSX. Here's an example of how you could use an if statement to conditionally render content:
+
+```js
+import React from "react";
+
+function Example(props) {
+  const showContent = props.showContent;
+
+  if (showContent) {
+    return <div>This content is visible</div>;
+  } else {
+    return <div>This content is not visible</div>;
+  }
+}
+```
+
+In this example, the Example component renders a div element with different content based on the value of the showContent prop. If the showContent prop is true, the component will render the first div element. If the showContent prop is false, the component will render the second div element.
+
+You can also use a ternary operator (?) to concisely render conditional content in a JSX expression:
+
+```js
+import React from "react";
+
+function Example(props) {
+  const showContent = props.showContent;
+
+  return (
+    <div>
+      {showContent ? "This content is visible" : "This content is not visible"}
+    </div>
+  );
+}
+```
+
+In this example, the JSX expression will evaluate the showContent prop and render the appropriate content based on its value.
+
+## How we use the inline css in react ?
+
+In React, you can use inline styles to style individual elements. To use inline styles, you will need to use the style attribute and pass it an object with camelCase style properties.
+
+Here's an example of how you could use inline styles to style a `div` element:
+
+```js
+import React from "react";
+
+function Example() {
+  const divStyle = {
+    color: "red",
+    backgroundColor: "yellow",
+  };
+
+  return <div style={divStyle}>This div has inline styles</div>;
+}
+```
+
+In this example, `the divStyle` object defines the inline styles for the `div` element. The style attribute is set to the `divStyle` object, which applies the styles to the element.
+
+It's important to note that inline styles in React are different from traditional inline styles in HTML. In React, inline styles are objects with camelCase properties, rather than strings with CSS styles. For example, the `background-color` style in HTML would be written as `backgroundColor` in React.
+
+## Scopying and Dynamically add CSS properties
+
+## Why we need scopying , where the conflict happens and we need it ?
+
+Conflicts can occur when you have multiple class names that apply the same styles to different elements in your application. This can happen when you have multiple CSS files or when you use generic class names like `.button` or `.form`.
+Suppose we have a such type of code
+
+```css
+/* button.css */
+.button {
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/* form.css */
+.button {
+  background-color: green;
+  color: black;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+```
+
+In this example, both the `button.css` and `form.css` files define a .`button` class with different styles. If both of these files are included in the same HTML document, the styles from the last file to be included will overwrite the styles from the first file.
+
+This can cause conflicts if you have multiple elements with the same class name that should have different styles. For example, if you have a button element and a form element both with the class `.button`, they will both have the same styles, which may not be what you intended.
+
+To avoid conflicts like this, you can use techniques like `scoping class` names to a specific component or using unique class names for each element. This can help to ensure that the styles applied to a specific element are only applied to that element and its children, rather than being applied globally to all elements with the same class name.
+
+### Fisrt Technique: Using `Styled-Components`
+
+Styled components is a library that allows you to use CSS styles in your React components, while automatically scoping the class names to avoid conflicts. To use styled components, you will need to install the `styled-components` library and import the styled function.
+
+```sh
+  npm i --save styled-components
+```
+
+Here's an example of how you could use styled components to style a button component:
+
+```js
+import React from "react";
+import styled from "styled-components";
+
+const Button = styled.button`
+  color: white;
+  background-color: blue;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 8px 16px;
+  &:hover {
+    background-color: darkblue;
+  }
+`;
+
+function MyButton(props) {
+  return <Button>Click me</Button>;
+}
+```
+
+In this example, the `Button` component is created using the styled function and a template literal with CSS styles. The `Button` component can then be used like any other component, and the styles will be applied to the rendered element.
+
+One of the benefits of using styled components is that the class names are automatically scoped to the component, which helps to avoid conflicts with other class names in your application. In this example, the generated class name for the Button component would be something like `.sc-bdnylx-1 gSzQGJ`, which is unique to the component and unlikely to cause conflicts with other class names.
+
+#### How to add CSS by using `Styled Components` ?
+
+To use `props` in a styled component, you can pass the props as arguments to the styled component function. For example, consider the following styled component that accepts a `color` prop:
+
+```js
+import styled from "styled-components";
+
+const MyButton = styled.button`
+  color: ${(props) => props.color};
+  background-color: blue;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 8px 16px;
+  &:hover {
+    background-color: darkblue;
+  }
+`;
+```
+
+In this example, the `color` prop is used to set the `color` style of the button. The value of the `color` prop is passed to the styled component function as an argument, and can be accessed using the props object.
+
+To use this styled component, you can pass the `color` prop when you render the component:
+
+```js
+<MyButton color="red">Click me</MyButton>
+```
+
+This will render a button with a red text color and the other styles defined in the styled component.
+
+#### How to add CSS by using `CSS-Modules` ?
+
+CSS modules are a way to write and use CSS styles in a modular way, with the goal of avoiding conflicts between class names. CSS modules work by automatically generating unique class names for each style, and scoping the class names to the specific component that uses them.
+
+To use CSS modules in a React application, you will need to configure your build process to support CSS modules. This typically involves using a tool like Webpack, which can transform your CSS files into modules that can be imported into your React components.
+
+Once you have configured your build process to support CSS modules, you can import a CSS file into a React component and use the styles in the file by assigning the styles to a JS object. Here's an example of how you could use CSS modules in a React component:
+
+```css
+/* styles.css */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.title {
+  font-size: 32px;
+  color: blue;
+}
+```
+
+```js
+import React from "react";
+import styles from "./styles.module.css";
+
+function App() {
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Welcome to my app</h1>
+    </div>
+  );
+}
+```
+
+In this example, the `styles.css` file is imported into the `App` component and assigned to the styles object. The `className` prop is used to apply the styles to the rendered elements, with the class names taken from the `styles` object.
+
+The class names in the styles object are automatically generated and scoped to the specific component that uses them, which helps to avoid conflicts with other class names in the application.
+
+you can use a different name instead of styles when importing a `CSS module` into a React component. To do this, you can use the as keyword when importing the CSS module.
+
+For example, instead of using the styles object, you could use a different name like css:
+
+```js
+import React from "react";
+import * as css from "./styles.module.css";
+
+function App() {
+  return (
+    <div className={css.container}>
+      <h1 className={css.title}>Welcome to my app</h1>
+    </div>
+  );
+}
+```
+
+In this example, the `css` object is used instead of the styles object to access the class names in the `CSS` module.
+
+You can use any valid JavaScript identifier as the name for the imported object, as long as it doesn't conflict with any other variables or keywords in your code.
+
+## Conclusion : Prefered Stylings
+
+```css
+/* button.css */
+.button {
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/* form.css */
+.button {
+  background-color: green;
+  color: black;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+```
+
+```js
+import React from "react";
+import * as buttonStyles from "./button.module.css";
+import * as formStyles from "./form.module.css";
+
+function Button(props) {
+  return <button className={buttonStyles.button}>{props.children}</button>;
+}
+
+function Form(props) {
+  return <form className={formStyles.button}>{props.children}</form>;
+}
+
+function App() {
+  return (
+    <div>
+      <Button>Click me</Button>
+      <Form>Submit</Form>
+    </div>
+  );
+}
+```
+
+In this example, the `button.css` and `form.css` files are imported into the Button and Form components as CSS modules, and assigned to the buttonStyles and `formStyles` objects, respectively. The className prop is used to apply the styles to the rendered elements, with the class names taken from the buttonStyles and formStyles objects.
+
+Because the class names in the buttonStyles and `formStyles` objects are automatically generated and scoped to the specific component that uses them, there is no conflict between the two `.button` class names. The styles from the button.css module will only be applied to `button` elements rendered by the Button component, and the styles from the `form.css` module will only be applied to `form` elements rendered by the Form component.
+
+## How to debugg ?
+
+There are a few different tools and techniques you can use to debug and find errors in a React application:
+
+JavaScript console: You can use the JavaScript console in your web browser's developer tools to view error messages and log statements from your React code. To open the console in most web browsers, you can use the keyboard shortcut Ctrl + Shift + J (Windows) or Command + Option + J (Mac).
+
+React Developer Tools: You can use the React Developer Tools browser extension to inspect the React components in your application and see their props and state. This can be helpful for understanding how your application is rendering and finding potential errors.
+
+Debugger statement: You can use the debugger statement in your JavaScript code to pause the execution of your code and open the debugger in your web browser's developer tools. This can be useful for inspecting the state of your application and debugging specific parts of your code.
+
+Error boundaries: You can use error boundaries in your React components to catch and handle errors that occur during rendering. This can help to prevent your application from crashing when an error occurs, and can make it easier to debug the error.
+
+Logging: You can use console.log statements and other logging functions to output information about your application to the console. This can be helpful for understanding how your code is executing and finding potential errors.
+
+### How we dynamically add css ?
 
 # 🤝 Contributing
 

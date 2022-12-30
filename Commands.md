@@ -22,3 +22,9 @@ To end the react app `Ctrl+c `(In linux)
 ```sh
 npm install
 ```
+
+## To install the styled-components library
+
+```sh
+npm i --save -styled-components
+```
