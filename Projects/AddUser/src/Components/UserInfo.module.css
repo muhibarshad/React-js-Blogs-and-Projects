@@ -18,3 +18,20 @@
 .user-info p.label {
   color: #777;
 }
+.delete {
+  display: block;
+  margin: 10px 0;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f44336;
+  color: #fff;
+  font-size: 14px;
+  height: 4vh;
+  width: 10vh;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: #dc3545;
+}

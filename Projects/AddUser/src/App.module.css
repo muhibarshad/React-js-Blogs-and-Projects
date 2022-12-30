@@ -1,0 +1,19 @@
+.App {
+  height: 200vh;
+  text-align: center;
+}
+.delete-all {
+  display: block;
+  margin: 50px 450px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f44336;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delete-all:hover {
+  background-color: #dc3545;
+}
