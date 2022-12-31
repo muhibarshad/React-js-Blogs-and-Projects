@@ -1,15 +1,21 @@
-# React ADD USER APP
 
+<div align="center">
+  <img src="Screenshot from 2023-01-01 01-51-23.png">
+</div>
+
+# React ADD USER APP (CRUD-Functionality)
+## I developed this project without the help of an instructor and added all the features myself.
 A simple ADD USER built with React.
 
 ## Features
 
 - Add user
 - Delete user
+- Update User
+- Read User
 - Delete All users
-- Input Validation
-- Data Reterving propert
-- Data Recovring
+- Input Validations(model-windows on specific errors)
+- Data Reterving functionality (LocalStorage)
 
 ## Getting Started
 

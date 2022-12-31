@@ -26,11 +26,25 @@ const App = () => {
   const deleteAllHandler = () => {
     updatedListOfusers([]);
   };
+
+
+  const onUpdateHandler = (updatedUser) => {
+    const updatedUsers = listOfUsers.map((user) => {
+      if (user.id === updatedUser.id) {
+        user.name = updatedUser.name;
+        user.age = updatedUser.age;
+      }
+      return user;
+    });
+    updatedListOfusers(updatedUsers);
+  };
+
+
   useEffect(() => {
     try {
       window.localStorage.setItem("users", JSON.stringify(listOfUsers));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }, [listOfUsers]);
   return (
@@ -46,7 +60,11 @@ const App = () => {
           Delete All
         </button>
       )}
-      <AddedUser renderUsers={listOfUsers} onDelete={onDeleteHandler} />
+      <AddedUser
+        renderUsers={listOfUsers}
+        onDelete={onDeleteHandler}
+        onUpdate={onUpdateHandler}
+      />
     </div>
   );
 };

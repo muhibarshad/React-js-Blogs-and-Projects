@@ -1,58 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import * as form from "./AddUserForm.module.css";
 import ModelWindow from "../UI/ModelWindow";
 const AddUserForm = (props) => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const nameRef = useRef(null);
+  const ageRef = useRef(null);
 
-  const nameValueHandler = (e) => {
-    setName(e.target.value);
-  };
-  const ageValueHandler = (e) => {
-    setAge(e.target.value);
-  };
   const [error, setError] = useState("");
+  const [err, setErr] = useState(false);
   const submitHandler = (e) => {
     e.preventDefault();
     const dataUser = {
       id: Math.random().toString(),
-      name: name,
-      age: age,
+      name: nameRef.current.value,
+      age: ageRef.current.value,
     };
-
-    if (name.trim().length === 0 || age.trim().length === 0) {
+    if (
+      nameRef.current.value.trim().length !== 0 &&
+      ageRef.current.value.trim().length !== 0 &&
+      +ageRef.current.value > 0
+    ) {
+      if (!err) {
+        props.addUserInList(dataUser);
+        ageRef.current.value = "";
+        nameRef.current.value = "";
+      }
+    } else if (
+      nameRef.current.value.trim().length === 0 ||
+      ageRef.current.value.trim().length === 0
+    ) {
       setError("Error: Input fields are empty!");
-    }
-    if (+age < 0) {
+      setErr(true);
+      if (nameRef.current.value.trim().length === 0) {
+        nameRef.current.value = "";
+      }
+      if (ageRef.current.value.trim().length === 0) {
+        ageRef.current.value = "";
+      }
+    } else if (+ageRef.current.value < 0) {
       setError("Error: Age must be greater than 0!");
+      setErr(true);
     }
-    // if (error === "") return;
-    props.addUserInList(dataUser);
-    setName("");
-    setAge("");
+    console.log(err);
   };
 
   const errorHandler = () => {
     setError(null);
+    setErr(false);
   };
 
   return (
-    <div>
+    <>
       {error && <ModelWindow errors={error} onConfirm={errorHandler} />}
       <form className={form.form}>
         <div className={form.input}>
           <label>Enter your Name</label>
-          <input type="text" value={name} onChange={nameValueHandler} />
+          <input type="text" ref={nameRef} />
         </div>
         <div className={form.input}>
           <label>Enter your Age</label>
-          <input type="number" value={age} onChange={ageValueHandler} />
+          <input type="number" ref={ageRef} />
         </div>
         <button type="submit" className={form.button} onClick={submitHandler}>
           Add User
         </button>
       </form>
-    </div>
+    </>
   );
 };
 
