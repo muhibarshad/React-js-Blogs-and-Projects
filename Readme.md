@@ -53,15 +53,15 @@ Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github
 
 - [Eliminate Unnecessary Wrapper Elements with React Fragments](/Blogs/11.ReactFragments.md)
 
--[Easily Render Components Anywhere with React Portals](/Blogs/12.ReactPortals.md)
+- [Easily Render Components Anywhere with React Portals](/Blogs/12.ReactPortals.md)
 
 - [Easily Access and Modify DOM Nodes with useRef in React](</Blogs/13.useRef()Hook.md)
 
--[Become a Pro at the useEffect Hook with These Advanced Techniques in React](/Blogs/14.useEffectHook.md)
+- [Become a Pro at the useEffect Hook with These Advanced Techniques in React](/Blogs/14.useEffectHook.md)
 
--[Effortlessly Manage Complex State with useReducer in React](</Blogs/15.useReducer()Hook.md>)
+- [Effortlessly Manage Complex State with useReducer in React](</Blogs/15.useReducer()Hook.md>)
 
--[The Perfect Combo: useReducer and useEffect for Powerful React Components](/Blogs/16.comboOFuseEffectAnduseReducer.md)
+- [The Perfect Combo: useReducer and useEffect for Powerful React Components](/Blogs/16.comboOFuseEffectAnduseReducer.md)
 
 # 20% OFF Extra
 
