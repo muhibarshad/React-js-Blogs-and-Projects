@@ -51,6 +51,18 @@ Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github
 
 - [The Art of Debugging in React: A Deep Dive into Best Practices and Common Pitfalls](/Blogs/10.DebuggingWays.md)
 
+- [Eliminate Unnecessary Wrapper Elements with React Fragments](/Blogs/11.ReactFragments.md)
+
+-[Easily Render Components Anywhere with React Portals](/Blogs/12.ReactPortals.md)
+
+- [Easily Access and Modify DOM Nodes with useRef in React](</Blogs/13.useRef()Hook.md)
+
+-[Become a Pro at the useEffect Hook with These Advanced Techniques in React](/Blogs/14.useEffectHook.md)
+
+-[Effortlessly Manage Complex State with useReducer in React](</Blogs/15.useReducer()Hook.md>)
+
+-[The Perfect Combo: useReducer and useEffect for Powerful React Components](/Blogs/16.comboOFuseEffectAnduseReducer.md)
+
 # 20% OFF Extra
 
 > I'm excited to share these other resources and attached files with you! From tips and tricks to templates and tools, I hope these resources will help you boost your productivity and take your skills to the next level.
