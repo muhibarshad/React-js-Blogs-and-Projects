@@ -26,7 +26,8 @@ If you're interested in seeing what I can do with React, you've come to the righ
 1. [Financial Expenses Tracker ](/Projects/Expense_Tracker/)
 2. [To Do List](/Projects/ToDo-App/)
 3. [User's App](/Projects/AddUser/)
-
+4. [Form Validation](/Projects/FormValidation/)
+5. [Food Ordering App](/Projects/Food%20Ordering%20App/)
 # Blogs
 
 Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github repository of React blogs! Inside, you'll find a wealth of knowledge on everything from the basics of React to more advanced topics and best practices. Whether you're a beginner looking to learn more about React or an experienced developer looking to improve your skills, I hope you'll find something here that's helpful and informative.
@@ -55,7 +56,7 @@ Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github
 
 - [Easily Render Components Anywhere with React Portals](/Blogs/12.ReactPortals.md)
 
-- [Easily Access and Modify DOM Nodes with useRef in React](/Blogs/13.useRef()Hook.md)
+- [Easily Access and Modify DOM Nodes with useRef in React](</Blogs/13.useRef()Hook.md>)
 
 - [Become a Pro at the useEffect Hook with These Advanced Techniques in React](/Blogs/14.useEffectHook.md)
 
