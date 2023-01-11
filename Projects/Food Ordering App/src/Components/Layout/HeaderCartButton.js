@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import * as buttonStyle from "./HeaderCartButton.module.css";
 import CartIcon from "../Cart/CartIcon";
-const HeaderCartButton = () => {
+const HeaderCartButton = (props) => {
   return (
     <Fragment>
-      <button className={buttonStyle.button}>
+      <button className={buttonStyle.button} onClick={props.onClick}>
         <span className={buttonStyle.icon}>
           <CartIcon />
         </span>
