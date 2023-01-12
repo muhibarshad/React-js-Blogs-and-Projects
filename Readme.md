@@ -64,6 +64,8 @@ Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github
 
 - [The Perfect Combo: useReducer and useEffect for Powerful React Components](/Blogs/16.comboOFuseEffectAnduseReducer.md)
 
+- [Passing Data through Context API ](/Blogs/17.useContext()Hook.md)
+
 # 20% OFF Extra
 
 > I'm excited to share these other resources and attached files with you! From tips and tricks to templates and tools, I hope these resources will help you boost your productivity and take your skills to the next level.
