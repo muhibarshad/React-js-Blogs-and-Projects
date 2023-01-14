@@ -28,6 +28,7 @@ If you're interested in seeing what I can do with React, you've come to the righ
 3. [User's App](/Projects/AddUser/)
 4. [Form Validation](/Projects/FormValidation/)
 5. [Food Ordering App](/Projects/Food%20Ordering%20App/)
+6. [MovieTracker:Create-Read-React-Frontend-Backend-Communication](/Projects/Create-Read-React-Frontend-Backend-Communication/)
 # Blogs
 
 Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github repository of React blogs! Inside, you'll find a wealth of knowledge on everything from the basics of React to more advanced topics and best practices. Whether you're a beginner looking to learn more about React or an experienced developer looking to improve your skills, I hope you'll find something here that's helpful and informative.
