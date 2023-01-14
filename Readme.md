@@ -67,6 +67,16 @@ Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github
 
 - [Passing Data through Context API ](/Blogs/17.useContext()Hook.md)
 
+- [Optimizing Your React Components: A Deep Dive into React's Powerful memo Feature](/Blogs/18.React.memo().md)
+
+- [Mastering React Hooks: The useCallback() Function and How to Optimize Your Components](/Blogs/19.useCallback()Hook.md)
+
+- [Navigating the State of React: Understanding and Utilizing State Scheduling](/Blogs/20.StateSecduling.md)
+
+- [Streamlining Your React Components: A Deep Dive into useMemo Hook](/Blogs/21.useMemo()Hook.md)
+
+- [Unlocking the Power of Full-Stack Development: A Guide to Frontend-Backend Communication](/Blogs/22.Frontend-Backend-Communication.md)
+
 # 20% OFF Extra
 
 > I'm excited to share these other resources and attached files with you! From tips and tricks to templates and tools, I hope these resources will help you boost your productivity and take your skills to the next level.
