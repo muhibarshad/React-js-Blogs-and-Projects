@@ -29,6 +29,7 @@ If you're interested in seeing what I can do with React, you've come to the righ
 4. [Form Validation](/Projects/FormValidation/)
 5. [Food Ordering App](/Projects/Food%20Ordering%20App/)
 6. [MovieTracker:Create-Read-React-Frontend-Backend-Communication](/Projects/Create-Read-React-Frontend-Backend-Communication/)
+7. [Firebase Custom Hooks Task Manager](/Projects/Firebase%20Custom%20Hooks%20Task%20Manager/)
 # Blogs
 
 Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github repository of React blogs! Inside, you'll find a wealth of knowledge on everything from the basics of React to more advanced topics and best practices. Whether you're a beginner looking to learn more about React or an experienced developer looking to improve your skills, I hope you'll find something here that's helpful and informative.
@@ -77,7 +78,10 @@ Welcome to [my](https://github.com/muhib7353/React-js-Blogs-and-Projects) Github
 
 - [Unlocking the Power of Full-Stack Development: A Guide to Frontend-Backend Communication](/Blogs/22.Frontend-Backend-Communication.md)
 
-- [Custom Hooks in React: A Game Changer for Your Components]
+- [Custom Hooks in React: A Game Changer for Your Components](/Blogs/23.CustomHooks.md)
+
+- [React Form Pro-Tips: Level Up Your Skills](/Blogs/ReactForms.md)
+- [Unlocking the Charm and Magic of Building Multi-Page SPAs with React Router: A Guide to Navigating the Realm]
 
 # 20% OFF Extra
 
